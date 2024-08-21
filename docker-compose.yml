@@ -7,16 +7,16 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - sk_example_db
+      - sk_db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://sk_example_db/sk_example_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://sk_db:5432/sk_example_db
       - SPRING_DATASOURCE_USERNAME=sk_example_user
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_DRIVER_CLASS_NAME=org.postgresql.Driver
 
-  sk_example_db:
+  sk_db:
     image: postgres:14-alpine
-    container_name: sk_example_db-container
+    container_name: sk_db-container
     ports:
       - "6541:5432"
     restart: always
